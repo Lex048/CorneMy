@@ -1,27 +1,30 @@
+/*
+ * Пользовательский overlay для Corne + nice!nano v2
+ */
+
 / {
-	chosen {
-		zmk,display = &oled;
-	};
+    chosen {
+        zmk,display = &oled;
+    };
 };
 
+// Включение шины I2C для OLED экранов (раскомментируйте, если экраны не работают)
 &i2c0 {
-	compatible = "nordic,nrf-twi";
-	status = "okay";
-	sda-pin = <17>;
-	scl-pin = <20>;
-
-	oled: ssd1306@3c {
-		compatible = "solomon,ssd1306fb";
-		reg = <0x3c>;
-		width = <128>;
-		height = <32>;
-		segment-offset = <0>;
-		page-offset = <0>;
-		display-offset = <0>;
-		multiplex-ratio = <31>;
-		segment-remap;
-		com-invdir;
-		prechargep = <0x22>;
-		status = "okay";
-	};
+    status = "okay";
+    compatible = "nordic,nrf-twi";
+    
+    oled: ssd1306@3c {
+        compatible = "solomon,ssd1306fb";
+        reg = <0x3c>;
+        width = <128>;
+        height = <32>; // Укажите <64>, если у вас высокие экраны
+        segment-offset = <0>;
+        page-offset = <0>;
+        display-offset = <0>;
+        multiplex-ratio = <31>;
+        segment-remap;
+        com-invdir;
+        prechargep = <0x22>;
+        status = "okay";
+    };
 };
