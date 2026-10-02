@@ -5,7 +5,7 @@
     
     ssd1306: ssd1306@3c {
         compatible = "solomon,ssd1306fb";
-        reg = <0x3c>;
+        reg = <0x3d>;
         width = <128>;
         height = <32>; // Измените на 64, если экран высокий
         multiplex-ratio = <31>; // Измените на 63 для 128x64
